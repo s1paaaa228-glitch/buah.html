@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ragam Suku Indonesia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 35, 50, 0.95);
+            padding: 16px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffc107;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ffc107;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 8%;
+            color: white;
+
+            background:
+                linear-gradient(rgba(0, 40, 60, .72), rgba(0, 0, 0, .55)),
+                url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ffc107;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.7;
+            color: #eee;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 25px;
+            background: #ffc107;
+            color: #222;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #ffca2c;
+        }
+
+        /* SECTION */
+        section {
+            padding: 80px 8%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .title h2 {
+            font-size: 38px;
+            color: #12394b;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #666;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.15);
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            color: #12394b;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* SEARCH */
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #12394b;
+        }
+
+        /* CARD */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,.08);
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 22px;
+        }
+
+        .card-content h3 {
+            font-size: 25px;
+            color: #12394b;
+            margin-bottom: 8px;
+        }
+
+        .location {
+            color: #d89600;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .card-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .tags {
+            margin-top: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 10px;
+            background: #edf5f7;
+            color: #126174;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 3px;
+        }
+
+        /* BUDAYA */
+        #budaya {
+            background: #eaf4f2;
+        }
+
+        .culture {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .culture-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px;
+            transition: .3s;
+        }
+
+        .culture-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .culture-card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .culture-card h3 {
+            color: #12394b;
+            margin-bottom: 10px;
+        }
+
+        .culture-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* QUOTE */
+        .quote {
+            text-align: center;
+            background: linear-gradient(135deg, #12394b, #087f8c);
+            color: white;
+            padding: 80px 20px;
+        }
+
+        .quote h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .quote p {
+            font-size: 18px;
+            color: #e5ffff;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #071923;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            color: #bbb;
+            margin-top: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .culture {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
+
+        @media(max-width: 600px) {
+            nav ul {
+                display: none;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .culture {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        Ragam<span>Indonesia</span> 🇮🇩
+    </div>
+
+    <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#suku">Suku</a></li>
+        <li><a href="#budaya">Budaya</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Beragam Suku,
+            <span>Beragam Cerita.</span>
+        </h1>
+
+        <p>
+            Indonesia merupakan negara yang memiliki kekayaan budaya
+            luar biasa. Dari Sabang sampai Merauke terdapat berbagai
+            suku bangsa dengan adat istiadat, bahasa, pakaian,
+            rumah adat, dan tradisi yang berbeda-beda.
+        </p>
+
+        <a href="#suku" class="btn">
+            Jelajahi Suku Indonesia →
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- TENTANG -->
+<section id="tentang">
+
+    <div class="title">
+        <h2>Tentang Keberagaman Indonesia</h2>
+        <p>Berbeda-beda tetapi tetap satu.</p>
+    </div>
+
+    <div class="about">
+
+        <img
+            src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=1000&q=80"
+            alt="Indonesia">
+
+        <div class="about-text">
+
+            <h3>🇮🇩 Bhinneka Tunggal Ika</h3>
+
+            <p>
+                Indonesia terdiri dari berbagai macam suku bangsa yang
+                tersebar di berbagai wilayah Nusantara. Setiap suku
+                memiliki budaya dan tradisi yang menjadi ciri khasnya.
+            </p>
+
+            <br>
+
+            <p>
+                Keberagaman tersebut merupakan kekayaan bangsa Indonesia
+                yang harus kita jaga dan lestarikan. Walaupun memiliki
+                perbedaan, masyarakat Indonesia tetap bersatu sebagai
+                satu bangsa.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SUKU -->
+<section id="suku">
+
+    <div class="title">
+
+        <h2>Beragam Suku di Indonesia</h2>
+
+        <p>
+            Kenali berbagai suku yang tersebar di Nusantara.
+        </p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔎 Cari nama suku..."
+            onkeyup="searchSuku()"
+        >
+
+    </div>
+
+
+    <div class="cards" id="sukuList">
+
+
+        <!-- BATAK -->
+        <div class="card">
+
+            <img
+                src="https://www.garudacitizen.com/wp-content/uploads/2025/02/Ulos.webp"
+                alt="Suku Batak">
+
+            <div class="card-content">
+
+                <h3>Suku Batak</h3>
+
+                <div class="location">
+                    📍 Sumatra Utara
+                </div>
+
+                <p>
+                    Suku Batak merupakan salah satu suku besar
+                    di Sumatra Utara. Batak memiliki beberapa
+                    kelompok seperti Batak Toba, Karo, Mandailing,
+                    Simalungun, Pakpak, dan Angkola.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Ulos</span>
+                    <span class="tag">Rumah Bolon</span>
+                    <span class="tag">Gondang</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MINANG -->
+        <div class="card">
+
+            <img
+                src="https://cdn.grid.id/crop/0x0%3A0x0/x/photo/2022/05/24/800px-rumah_gadang_dan_baju_adat-20220524080305.jpg"
+                alt="Suku Minangkabau">
+
+            <div class="card-content">
+
+                <h3>Minangkabau</h3>
+
+                <div class="location">
+                    📍 Sumatra Barat
+                </div>
+
+                <p>
+                    Suku Minangkabau terkenal dengan Rumah Gadang,
+                    tradisi merantau, serta budaya matrilineal.
+                    Masyarakat Minangkabau juga memiliki kekayaan
+                    kuliner dan kesenian.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Rumah Gadang</span>
+                    <span class="tag">Rendang</span>
+                    <span class="tag">Randai</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- JAWA -->
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=900&q=80"
+                alt="Budaya Jawa">
+
+            <div class="card-content">
+
+                <h3>Suku Jawa</h3>
+
+                <div class="location">
+                    📍 Jawa Tengah & Jawa Timur
+                </div>
+
+                <p>
+                    Suku Jawa merupakan salah satu suku dengan jumlah
+                    penduduk terbesar di Indonesia. Budaya Jawa memiliki
+                    banyak tradisi, bahasa, seni, dan adat istiadat.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Batik</span>
+                    <span class="tag">Wayang</span>
+                    <span class="tag">Gamelan</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUNDA -->
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80"
+                alt="Budaya Sunda">
+
+            <div class="card-content">
+
+                <h3>Suku Sunda</h3>
+
+                <div class="location">
+                    📍 Jawa Barat
+                </div>
+
+                <p>
+                    Suku Sunda berasal dari wilayah Jawa Barat dan
+                    memiliki berbagai kesenian khas seperti angklung,
+                    wayang golek, tari tradisional, dan bahasa Sunda.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Angklung</span>
+                    <span class="tag">Wayang Golek</span>
+                    <span class="tag">Sunda</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DAYAK -->
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80"
+                alt="Kalimantan">
+
+            <div class="card-content">
+
+                <h3>Suku Dayak</h3>
+
+                <div class="location">
+                    📍 Kalimantan
+                </div>
+
+                <p>
+                    Dayak merupakan sebutan untuk berbagai kelompok
+                    masyarakat adat di Pulau Kalimantan. Budayanya
+                    terkenal dengan rumah panjang, ukiran, dan kesenian.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Rumah Panjang</span>
+                    <span class="tag">Ukiran</span>
+                    <span class="tag">Tarian</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUGIS -->
+        <div class="card">
+
+            <img
+                src="https://ik.imagekit.io/tvlk/image/imageResource/2023/06/22/1687393027822-50fe9a8acb5e5a8fdcf43397ffa6451f.png?tr=q-75"
+                alt="Suku Bugis">
+
+            <div class="card-content">
+
+                <h3>Suku Bugis</h3>
+
+                <div class="location">
+                    📍 Sulawesi Selatan
+                </div>
+
+                <p>
+                    Suku Bugis dikenal sebagai masyarakat yang memiliki
+                    tradisi maritim yang kuat. Salah satu warisan
+                    terkenalnya adalah kapal Pinisi.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Baju Bodo</span>
+                    <span class="tag">Pinisi</span>
+                    <span class="tag">Lontara</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TORAJA -->
+        <div class="card">
+
+            <img
+                src="https://keidenesia.tv/wp-content/uploads/2025/06/ig%40torajatripadventure-e1749802204389.jpeg"
+                alt="Suku Toraja">
+
+            <div class="card-content">
+
+                <h3>Suku Toraja</h3>
+
+                <div class="location">
+                    📍 Sulawesi Selatan
+                </div>
+
+                <p>
+                    Suku Toraja terkenal dengan rumah adat Tongkonan,
+                    ukiran khas, dan berbagai tradisi masyarakat
+                    yang diwariskan dari generasi ke generasi.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Tongkonan</span>
+                    <span class="tag">Ukiran</span>
+                    <span class="tag">Budaya Toraja</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BALI -->
+        <div class="card">
+
+            <img
+                src="https://disbudpar.bulelengkab.go.id/uploads/konten/69-payas-agung.jpg"
+                alt="Suku Bali">
+
+            <div class="card-content">
+
+                <h3>Suku Bali</h3>
+
+                <div class="location">
+                    📍 Bali
+                </div>
+
+                <p>
+                    Masyarakat Bali memiliki budaya yang sangat kaya,
+                    mulai dari seni tari, upacara adat, arsitektur,
+                    hingga sistem pertanian tradisional Subak.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Tari Bali</span>
+                    <span class="tag">Subak</span>
+                    <span class="tag">Payas Agung</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAPUA -->
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=900&q=80"
+                alt="Papua">
+
+            <div class="card-content">
+
+                <h3>Suku Papua</h3>
+
+                <div class="location">
+                    📍 Papua
+                </div>
+
+                <p>
+                    Papua memiliki banyak kelompok masyarakat adat
+                    dengan bahasa, tradisi, dan kesenian yang beragam.
+                    Setiap wilayah memiliki ciri budaya tersendiri.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Honai</span>
+                    <span class="tag">Tari Tradisional</span>
+                    <span class="tag">Ukiran</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BUDAYA -->
+<section id="budaya">
+
+    <div class="title">
+
+        <h2>Kekayaan Budaya Indonesia</h2>
+
+        <p>
+            Keberagaman suku menghasilkan budaya yang luar biasa.
+        </p>
+
+    </div>
+
+
+    <div class="culture">
+
+        <div class="culture-card">
+
+            <div class="icon">👘</div>
+
+            <h3>Pakaian Adat</h3>
+
+            <p>
+                Setiap daerah memiliki pakaian adat
+                dengan bentuk dan makna yang berbeda.
+            </p>
+
+        </div>
+
+
+        <div class="culture-card">
+
+            <div class="icon">🏠</div>
+
+            <h3>Rumah Adat</h3>
+
+            <p>
+                Rumah adat mencerminkan kehidupan
+                dan lingkungan masyarakat setempat.
+            </p>
+
+        </div>
+
+
+        <div class="culture-card">
+
+            <div class="icon">💃</div>
+
+            <h3>Tarian</h3>
+
+            <p>
+                Tarian tradisional menjadi salah satu
+                bentuk seni yang diwariskan turun-temurun.
+            </p>
+
+        </div>
+
+
+        <div class="culture-card">
+
+            <div class="icon">🎵</div>
+
+            <h3>Musik Tradisional</h3>
+
+            <p>
+                Alat musik dan lagu daerah memperkaya
+                warisan budaya Indonesia.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUOTE -->
+<div class="quote">
+
+    <h2>🇮🇩 Bhinneka Tunggal Ika 🇮🇩</h2>
+
+    <p>
+        “Walaupun berbeda suku, budaya, dan bahasa,
+        kita tetap satu sebagai bangsa Indonesia.”
+    </p>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h3>Ragam Indonesia</h3>
+
+    <p>
+        Website edukasi tentang keberagaman suku dan budaya Indonesia.
+    </p>
+
+    <p>
+        © 2026 Ragam Indonesia
+    </p>
+
+</footer>
+
+
+<script>
+
+function searchSuku() {
+
+    let input =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    let cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+
+        let text =
+            card.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
